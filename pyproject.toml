@@ -1,0 +1,30 @@
+[build-system]
+requires = ["uv_build>=0.9.30,<0.10.0"]
+build-backend = "uv_build"
+
+[project]
+name = "jail-mcp"
+version = "1.0.0"
+description = "Search papers, books, code, legal cases, forums, Wikipedia, and more from one API."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "JAIL", email = "buyoufeng@jail.li" }]
+keywords = ["mcp", "search", "api", "jail", "academic", "legal", "books"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "mcp[cli]>=1.2.0",
+    "httpx",
+]
+
+[project.urls]
+Homepage = "https://jail.li"
+Repository = "https://github.com/mefengl/jail-mcp"
+
+[project.scripts]
+jail-mcp = "jail_mcp:main"

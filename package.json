@@ -1,0 +1,35 @@
+{
+  "name": "jail-mcp",
+  "version": "1.0.0",
+  "description": "Search papers, books, code, legal cases, forums, Wikipedia, and more from one API.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "jail-mcp": "index.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "zod": "^3.24.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "search",
+    "jail",
+    "academic",
+    "legal",
+    "books",
+    "papers"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mefengl/jail-mcp.git"
+  },
+  "homepage": "https://jail.li",
+  "author": "JAIL <buyoufeng@jail.li>"
+}
