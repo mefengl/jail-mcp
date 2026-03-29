@@ -1,6 +1,6 @@
 {
   "name": "jail-mcp",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Search papers, books, code, legal cases, forums, Wikipedia, and more from one API.",
   "license": "MIT",
   "type": "module",
@@ -31,5 +31,6 @@
     "url": "git+https://github.com/mefengl/jail-mcp.git"
   },
   "homepage": "https://jail.li",
-  "author": "JAIL <buyoufeng@jail.li>"
+  "author": "JAIL <buyoufeng@jail.li>",
+  "mcpName": "io.github.mefengl/jail-mcp"
 }

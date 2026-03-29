@@ -1,68 +1,42 @@
 {
-  "$schema": "https://registry.modelcontextprotocol.io/schema/server.json",
-  "name": "jail-search",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.mefengl/jail-mcp",
+  "title": "JAIL Search",
   "description": "Search papers, books, code, legal cases, forums, Wikipedia, and more from one API.",
+  "version": "1.1.2",
   "repository": {
     "url": "https://github.com/mefengl/jail-mcp",
-    "source": "https://github.com/mefengl/jail-mcp"
+    "source": "github"
   },
-  "version_detail": {
-    "version": "1.0.0"
-  },
+  "websiteUrl": "https://jail.li",
   "packages": [
     {
-      "registry_name": "npm",
-      "name": "jail-mcp",
+      "registryType": "npm",
       "identifier": "jail-mcp",
-      "runtime": "node",
-      "package_arguments": [],
-      "environment_variables": [
+      "version": "1.1.2",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
         {
           "name": "JAIL_API_KEY",
-          "description": "JAIL Pro API key from jail.li. Optional \u2014 trial works without a key.",
+          "description": "JAIL Pro API key from jail.li. Optional: trial works without a key.",
           "isRequired": false,
           "isSecret": true
         }
       ]
     },
     {
-      "registry_name": "pypi",
-      "name": "jail-mcp",
+      "registryType": "pypi",
       "identifier": "jail-mcp",
-      "runtime": "python",
-      "package_arguments": [],
-      "environment_variables": [
+      "version": "1.1.2",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
         {
           "name": "JAIL_API_KEY",
-          "description": "JAIL Pro API key from jail.li. Optional \u2014 trial works without a key.",
+          "description": "JAIL Pro API key from jail.li. Optional: trial works without a key.",
           "isRequired": false,
           "isSecret": true
         }
       ]
-    }
-  ],
-  "remotes": [],
-  "icons": [],
-  "tools": [
-    {
-      "name": "search",
-      "description": "Search documents. Filter by type (academic, books, legal, wiki, forums, etc). Supports pagination."
-    },
-    {
-      "name": "detail",
-      "description": "Get full metadata for a specific document by ID."
-    }
-  ],
-  "prompts": [
-    {
-      "name": "research",
-      "description": "Multi-angle research: broad search, then drill into academic papers, books, and forums."
-    }
-  ],
-  "resources": [
-    {
-      "name": "jail://schema",
-      "description": "Compact machine-readable schema for MCP tools."
     }
   ]
 }

@@ -1,5 +1,7 @@
 # JAIL Search — MCP Server
 
+<!-- mcp-name: io.github.mefengl/jail-mcp -->
+
 Search papers, books, code, legal cases, forums, Wikipedia, and more from one API.
 
 ## Quick Start
