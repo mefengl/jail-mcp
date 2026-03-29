@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "jail": {
+      "command": "npx",
+      "args": ["-y", "jail-mcp@latest"],
+      "env": {
+        "JAIL_API_KEY": ""
+      }
+    }
+  }
+}
