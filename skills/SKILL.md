@@ -6,7 +6,7 @@ metadata: {"openclaw":{"requires":{"bins":["curl"]},"optionalEnv":["JAIL_API_KEY
 
 # JAIL Search
 
-A discovery tool. Returns titles, authors, URLs, and short descriptions — not full content. Find sources here, then use `curl` or `fetch` to read the actual documents.
+Results include titles, authors, URLs, and short descriptions. This is for discovering sources and links, not retrieving full content. After finding relevant results, use their URLs with fetch or browsing tools to read the actual documents.
 
 ## When to use
 
