@@ -36,6 +36,8 @@ curl -s "https://api.jail.li/v1/detail/DOC_ID"
 
 ## Types
 
+Start with: `academic`, `wiki`, `books`, `legal`, `forums`. The rest just exist if you need.
+
 ```bash
 curl -s "https://api.jail.li/v1/types"
 ```
@@ -43,24 +45,24 @@ curl -s "https://api.jail.li/v1/types"
 | Type | Content |
 |------|---------|
 | `academic` | OpenAlex, arXiv, Semantic Scholar, DBLP |
-| `audio` | Podcasts and audio content |
-| `books` | Books, digital libraries, and classical literature |
-| `crypto` | DeFi protocols, token data, and on-chain analytics |
-| `economics` | World Bank, IMF, FRED, ECB, BLS, Tax Foundation |
-| `fandom` | Fan wiki articles and community knowledge bases |
-| `forums` | Hacker News, StackExchange, Lobsters, LessWrong, and 60+ more |
-| `geo` | World place names and geographic data |
-| `health` | Clinical trials and food safety data |
-| `knowledge` | Wikidata, structured knowledge, and facts |
-| `legal` | Harvard Case Law, CourtListener, EUR-Lex, UK Legislation |
-| `music` | Discogs, MusicBrainz |
-| `news` | News articles and journalism |
-| `packages` | npm, PyPI, Crates.io, Libraries.io |
-| `predictions` | Prediction markets and forecasting |
-| `social` | Mastodon, Lemmy, fediverse |
-| `tech` | Dev.to, product community forums |
-| `video` | IMDb, YouTube |
 | `wiki` | Wikipedia (en/zh/de/fr/es/ru/ja/ko/it/pl/ar/cs/da/el/hi/hu/ro/az) |
+| `books` | Books, digital libraries, and classical literature |
+| `legal` | Harvard Case Law, CourtListener, EUR-Lex, UK Legislation |
+| `forums` | Hacker News, StackExchange, Lobsters, LessWrong, and 60+ more |
+| `economics` | World Bank, IMF, FRED, ECB, BLS, Tax Foundation |
+| `packages` | npm, PyPI, Crates.io, Libraries.io |
+| `knowledge` | Wikidata, structured knowledge, and facts |
+| `news` | News articles and journalism |
+| `music` | Discogs, MusicBrainz |
+| `video` | IMDb, YouTube |
+| `health` | Clinical trials and food safety data |
+| `geo` | World place names and geographic data |
+| `fandom` | Fan wiki articles and community knowledge bases |
+| `tech` | Dev.to, product community forums |
+| `audio` | Podcasts and audio content |
+| `social` | Mastodon, Lemmy, fediverse |
+| `crypto` | DeFi protocols, token data, and on-chain analytics |
+| `predictions` | Prediction markets and forecasting |
 
 ## Strategy
 

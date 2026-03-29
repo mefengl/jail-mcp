@@ -12,5 +12,5 @@ publish\:pypi:
 
 publish\:skill:
 	npx clawhub@latest login --token "$$(op read 'op://Personal/clawhub-token/credential')" --no-browser
-	npx clawhub@latest publish skills/ --slug jail-search
+	npx clawhub@latest publish skills/ --slug jail-search --version "$$(node -p "require('./package.json').version")"
 	npx clawhub@latest logout

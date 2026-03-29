@@ -16,25 +16,27 @@ const API_KEY = (() => {
   return PLACEHOLDER_KEYS.has(raw.toLowerCase()) ? "" : raw;
 })();
 const TYPES = {
+  // Recommended
   academic: "OpenAlex, arXiv, Semantic Scholar, DBLP",
-  audio: "Podcasts and audio content",
-  books: "Books, digital libraries, and classical literature",
-  crypto: "DeFi protocols, token data, and on-chain analytics",
-  economics: "World Bank, IMF, FRED, ECB, BLS, Tax Foundation",
-  fandom: "Fan wiki articles and community knowledge bases",
-  forums: "Hacker News, StackExchange, Lobsters, LessWrong, and 60+ more",
-  geo: "World place names and geographic data",
-  health: "Clinical trials and food safety data",
-  knowledge: "Wikidata, structured knowledge, and facts",
-  legal: "Harvard Case Law, CourtListener, EUR-Lex, UK Legislation",
-  music: "Discogs, MusicBrainz",
-  news: "News articles and journalism",
-  packages: "npm, PyPI, Crates.io, Libraries.io",
-  predictions: "Prediction markets and forecasting",
-  social: "Mastodon, Lemmy, fediverse",
-  tech: "Dev.to, product community forums",
-  video: "IMDb, YouTube",
   wiki: "Wikipedia (en/zh/de/fr/es/ru/ja/ko/it/pl/ar/cs/da/el/hi/hu/ro/az)",
+  books: "Books, digital libraries, and classical literature",
+  legal: "Harvard Case Law, CourtListener, EUR-Lex, UK Legislation",
+  forums: "Hacker News, StackExchange, Lobsters, LessWrong, and 60+ more",
+  economics: "World Bank, IMF, FRED, ECB, BLS, Tax Foundation",
+  packages: "npm, PyPI, Crates.io, Libraries.io",
+  knowledge: "Wikidata, structured knowledge, and facts",
+  news: "News articles and journalism",
+  // Smaller or narrower indices
+  music: "Discogs, MusicBrainz",
+  video: "IMDb, YouTube",
+  health: "Clinical trials and food safety data",
+  geo: "World place names and geographic data",
+  fandom: "Fan wiki articles and community knowledge bases",
+  tech: "Dev.to, product community forums",
+  audio: "Podcasts and audio content",
+  social: "Mastodon, Lemmy, fediverse",
+  crypto: "DeFi protocols, token data, and on-chain analytics",
+  predictions: "Prediction markets and forecasting",
 };
 const TYPE_KEYS = Object.keys(TYPES);
 
@@ -60,7 +62,7 @@ function summary(doc) {
   return s;
 }
 
-const INSTRUCTIONS = `You have access to JAIL Search — a discovery tool for finding documents across academic papers, case law, books, encyclopedias, forums, and more.
+const INSTRUCTIONS = `You have access to JAIL Search, a discovery tool for finding documents across academic papers, case law, books, encyclopedias, forums, and more.
 
 Results include titles, authors, URLs, and short descriptions. This is for discovering sources and links, not retrieving full content. After finding relevant results, use their URLs with fetch or browsing tools to read the actual documents.
 
@@ -73,8 +75,8 @@ Results include titles, authors, URLs, and short descriptions. This is for disco
 - User asks "search for...", "find...", or "look up..."
 
 ## Quick start
-1. Call \`search(query="your topic", type="academic")\` — type is required
-2. Try multiple types: academic, books, wiki, forums, legal, news, knowledge
+1. Call \`search(query="your topic", type="academic")\`. Type is required.
+2. Start with: academic, wiki, books, legal, forums. The rest just exist if you need.
 3. Use \`detail(doc_id)\` to get full metadata for a specific result
 
 ## Search strategy
@@ -87,7 +89,8 @@ Results include titles, authors, URLs, and short descriptions. This is for disco
 7. Paginate: use next_cursor from response as the \`cursor\` parameter
 
 ## Available types
-academic, audio, books, crypto, economics, fandom, forums, geo, health, knowledge, legal, music, news, packages, predictions, social, tech, video, wiki
+academic, wiki, books, legal, forums, economics, packages, knowledge, news
+  music, video, health, geo, fandom, tech, audio, social, crypto, predictions
 
 ## Response fields
 Each result: title, author, year, type, description (200 char), id, url, score.
@@ -105,7 +108,7 @@ server.tool(
     query: z.string().describe("Search query (natural language or keywords, any language)"),
     type: z.enum(TYPE_KEYS).describe("Content type (required). Use: academic, books, wiki, forums, legal, news, knowledge, music, video, audio, packages, geo, economics, health, fandom, social, tech, crypto, predictions."),
     limit: z.number().int().min(1).max(50).default(10).describe("Results to return (1-50). Trial max 10, Pro max 50."),
-    cursor: z.string().optional().describe("Opaque pagination token — use next_cursor from previous response"),
+    cursor: z.string().optional().describe("Opaque pagination token. Use next_cursor from previous response."),
   },
   async ({ query, type, limit, cursor }) => {
     const params = { q: query, type, limit: Math.min(limit ?? 10, 50) };
@@ -155,7 +158,7 @@ server.resource("jail://schema", "jail://schema", async () => ({
     mimeType: "application/json",
     text: JSON.stringify({
       server: "jail-search", version: "1.0.0",
-      notes: ["type is required — pick the right type first", "search first, then detail with an id"],
+      notes: ["type is required: pick the right type first", "search first, then detail with an id"],
       tools: {
         search: { input: { query: "string", type: `enum(${TYPE_KEYS.sort().join(",")})`,
                            limit: "int 1-50 default 10", cursor: "string|null (opaque pagination token)" } },
