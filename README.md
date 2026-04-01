@@ -2,7 +2,7 @@
 
 <!-- mcp-name: io.github.mefengl/jail-mcp -->
 
-Search 1.7 billion documents across papers, books, code, legal cases, forums, Wikipedia, and more from one API.
+Search across papers, books, code, legal cases, forums, Wikipedia, and more from one API.
 
 ## Quick Start
 
