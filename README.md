@@ -1,12 +1,12 @@
-# JAIL Search — MCP Server
+# JAIL Search — MCP Server + Plugins
 
 <!-- mcp-name: io.github.mefengl/jail-mcp -->
 
-Search papers, books, code, legal cases, forums, Wikipedia, and more from one API.
+Search 1.7 billion documents across papers, books, code, legal cases, forums, Wikipedia, and more from one API.
 
 ## Quick Start
 
-Add to your MCP client config. No API key needed.
+Works with any MCP-compatible tool. No API key needed.
 
 ```json
 {
@@ -35,67 +35,41 @@ Or with Python: `"command": "uvx", "args": ["jail-mcp"]`
 }
 ```
 
-<details>
-<summary>Claude Desktop</summary>
+## Plugins
 
-Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
-
-```json
-{
-  "mcpServers": {
-    "jail": {
-      "command": "npx",
-      "args": ["-y", "jail-mcp@latest"]
-    }
-  }
-}
-```
-</details>
-
-<details>
-<summary>Claude Code</summary>
+### Claude Code
 
 ```bash
-claude mcp add jail npx -y jail-mcp@latest
+/plugin marketplace add mefengl/jail-mcp
+/plugin install jail-search
 ```
-</details>
 
-<details>
-<summary>Cursor</summary>
+Or add MCP directly:
 
-Add to `.cursor/mcp.json`:
-
-```json
-{
-  "mcpServers": {
-    "jail": {
-      "command": "npx",
-      "args": ["-y", "jail-mcp@latest"]
-    }
-  }
-}
+```bash
+claude mcp add jail -- npx -y jail-mcp@latest
 ```
-</details>
 
-<details>
-<summary>VS Code / Copilot</summary>
+### Hermes Agent
 
-Add to `.vscode/mcp.json`:
+Add MCP server to `~/.hermes/config.yaml`:
 
-```json
-{
-  "servers": {
-    "jail": {
-      "command": "npx",
-      "args": ["-y", "jail-mcp@latest"]
-    }
-  }
-}
+```yaml
+mcp_servers:
+  jail:
+    command: "npx"
+    args: ["-y", "jail-mcp@latest"]
+    env:
+      JAIL_API_KEY: ""  # optional
 ```
-</details>
 
-<details>
-<summary>Copilot CLI</summary>
+Or install the skill from ClawHub:
+
+```bash
+hermes skill install jail-search
+```
+
+### Copilot CLI
 
 ```
 /mcp add
@@ -114,12 +88,73 @@ Or edit `~/.copilot/mcp-config.json`:
   }
 }
 ```
-</details>
 
 <details>
-<summary>Windsurf</summary>
+<summary>More clients: Claude Desktop, VS Code, Cursor, Windsurf, Crush</summary>
+
+**Claude Desktop**
+
+Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
+
+```json
+{
+  "mcpServers": {
+    "jail": {
+      "command": "npx",
+      "args": ["-y", "jail-mcp@latest"]
+    }
+  }
+}
+```
+
+**VS Code / Copilot**
+
+Add to `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "jail": {
+      "command": "npx",
+      "args": ["-y", "jail-mcp@latest"]
+    }
+  }
+}
+```
+
+**Cursor**
+
+Add to `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "jail": {
+      "command": "npx",
+      "args": ["-y", "jail-mcp@latest"]
+    }
+  }
+}
+```
+
+**Windsurf**
 
 Add to `~/.codeium/windsurf/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "jail": {
+      "command": "npx",
+      "args": ["-y", "jail-mcp@latest"]
+    }
+  }
+}
+```
+
+**Crush (formerly OpenCode)**
+
+Add to `.opencode.json` or Crush config:
 
 ```json
 {
