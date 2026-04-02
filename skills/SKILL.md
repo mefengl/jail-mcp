@@ -21,6 +21,24 @@ Search engine covering 1.7 billion documents across 19 content types. Returns ti
 
 Use `mcp_jail_search(query, type)` and `mcp_jail_detail(doc_id)`.
 
+### Setup (if not already configured)
+
+Connect to the hosted MCP server:
+
+```bash
+claude mcp add --transport http jail https://api.jail.li/mcp
+```
+
+With API key for higher rate limits:
+
+```bash
+claude mcp add --transport http jail "https://api.jail.li/mcp?jailApiKey=sk_live_your_key_from_jail_li"
+```
+
+For other clients, add to MCP config: `"url": "https://api.jail.li/mcp?jailApiKey=sk_live_..."`
+
+Get a key at [jail.li](https://jail.li#pricing).
+
 ## Via curl (fallback)
 
 ### Search
@@ -29,7 +47,7 @@ Use `mcp_jail_search(query, type)` and `mcp_jail_detail(doc_id)`.
 curl -Gs "https://api.jail.li/v1/search" --data-urlencode "q=QUERY" -d "type=TYPE&limit=10"
 ```
 
-With API key: add `-H "Authorization: Bearer $JAIL_API_KEY"`
+With API key: add `-H "Authorization: Bearer $JAIL_API_KEY"` or use `?jailApiKey=sk_live_...`
 
 Replace `QUERY` and `TYPE` (required, see below).
 

@@ -2,8 +2,8 @@
 
 <!-- mcp-name: io.github.mefengl/jail-mcp -->
 
-[![Install in Cursor](https://img.shields.io/badge/Install_in-Cursor-000000?style=flat-square&logoColor=white)](https://cursor.com/en/install-mcp?name=jail&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsImphaWwtbWNwQGxhdGVzdCJdfQ==)
-[![Install in VS Code](https://img.shields.io/badge/Install_in-VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=jail&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22jail-mcp%40latest%22%5D%7D)
+[![Install in Cursor](https://img.shields.io/badge/Install_in-Cursor-000000?style=flat-square&logoColor=white)](https://cursor.com/en/install-mcp?name=jail&config=eyJuYW1lIjoiamFpbCIsInR5cGUiOiJodHRwIiwidXJsIjoiaHR0cHM6Ly9hcGkuamFpbC5saS9tY3AifQ==)
+[![Install in VS Code](https://img.shields.io/badge/Install_in-VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=jail&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A//api.jail.li/mcp%22%7D)
 
 Search 1.7B documents across papers, books, code, legal cases, forums, Wikipedia, and more.
 
@@ -11,20 +11,13 @@ Search 1.7B documents across papers, books, code, legal cases, forums, Wikipedia
 
 ## Quick Start
 
-Works with any MCP-compatible tool. No API key needed.
+Connect to the hosted MCP server — no install needed:
 
-```json
-{
-  "mcpServers": {
-    "jail": {
-      "command": "npx",
-      "args": ["-y", "jail-mcp@latest"]
-    }
-  }
-}
+```
+https://api.jail.li/mcp
 ```
 
-Or with Python: `"command": "uvx", "args": ["jail-mcp"]`
+[Get your API key](https://jail.li#pricing) for higher rate limits (optional).
 
 ## Installation
 
@@ -37,8 +30,7 @@ Add to `~/.cursor/mcp.json`:
 {
   "mcpServers": {
     "jail": {
-      "command": "npx",
-      "args": ["-y", "jail-mcp@latest"]
+      "url": "https://api.jail.li/mcp"
     }
   }
 }
@@ -54,8 +46,8 @@ Add to `.vscode/mcp.json`:
 {
   "servers": {
     "jail": {
-      "command": "npx",
-      "args": ["-y", "jail-mcp@latest"]
+      "type": "http",
+      "url": "https://api.jail.li/mcp"
     }
   }
 }
@@ -66,7 +58,7 @@ Add to `.vscode/mcp.json`:
 <summary><b>Claude Code</b></summary>
 
 ```bash
-claude mcp add jail -- npx -y jail-mcp@latest
+claude mcp add --transport http jail https://api.jail.li/mcp
 ```
 </details>
 
@@ -80,7 +72,33 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
   "mcpServers": {
     "jail": {
       "command": "npx",
-      "args": ["-y", "jail-mcp@latest"]
+      "args": ["-y", "mcp-remote", "https://api.jail.li/mcp"]
+    }
+  }
+}
+```
+</details>
+
+<details>
+<summary><b>Codex</b></summary>
+
+```bash
+codex mcp add jail --url https://api.jail.li/mcp
+```
+</details>
+
+<details>
+<summary><b>OpenCode</b></summary>
+
+Add to your `opencode.json`:
+
+```json
+{
+  "mcp": {
+    "jail": {
+      "type": "remote",
+      "url": "https://api.jail.li/mcp",
+      "enabled": true
     }
   }
 }
@@ -96,8 +114,8 @@ Edit `~/.copilot/mcp-config.json`:
 {
   "mcpServers": {
     "jail": {
-      "command": "npx",
-      "args": ["-y", "jail-mcp@latest"]
+      "type": "http",
+      "url": "https://api.jail.li/mcp"
     }
   }
 }
@@ -113,8 +131,7 @@ Add to `~/.codeium/windsurf/mcp_config.json`:
 {
   "mcpServers": {
     "jail": {
-      "command": "npx",
-      "args": ["-y", "jail-mcp@latest"]
+      "serverUrl": "https://api.jail.li/mcp"
     }
   }
 }
@@ -129,24 +146,40 @@ Add to `~/.hermes/config.yaml`:
 ```yaml
 mcp_servers:
   jail:
-    command: "npx"
-    args: ["-y", "jail-mcp@latest"]
+    url: "https://api.jail.li/mcp"
 ```
 
 Or install the skill: `hermes skill install jail-search`
 </details>
 
 <details>
-<summary><b>Crush</b></summary>
+<summary><b>Via npm Package</b></summary>
 
-```bash
-npx -y jail-mcp@latest --http --port 8808
+Use the npm package for stdio transport:
+
+```json
+{
+  "mcpServers": {
+    "jail": {
+      "command": "npx",
+      "args": ["-y", "jail-mcp@latest"]
+    }
+  }
+}
 ```
+
+Or with Python: `"command": "uvx", "args": ["jail-mcp"]`
 </details>
 
 ### With API key
 
-Add `"env": { "JAIL_API_KEY": "your-key" }` to any config above for higher rate limits.
+Append `?jailApiKey=` to the URL for higher rate limits:
+
+```
+https://api.jail.li/mcp?jailApiKey=sk_live_your_key_from_jail_li
+```
+
+For the npm/uvx package, use an env var instead: `"env": { "JAIL_API_KEY": "sk_live_..." }`
 
 Get a key at [jail.li](https://jail.li#pricing).
 
