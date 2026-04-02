@@ -19,7 +19,7 @@ https://api.jail.li/mcp
 
 [Get API key](https://jail.li#pricing) for higher limits — append `?jailApiKey=` to the URL.
 
-<details open>
+<details>
 <summary><b>Claude Code</b></summary>
 
 ```bash
