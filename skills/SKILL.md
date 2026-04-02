@@ -1,12 +1,12 @@
 ---
 name: jail-search
-description: Search 1.7B documents across papers, books, legal cases, forums, Wikipedia, and more from one API.
+description: Search a billion+ documents — papers, books, code, legal cases, forums, Wikipedia, and more.
 metadata: {"openclaw":{"requires":{"bins":["curl"]},"optionalEnv":["JAIL_API_KEY"],"emoji":"🔍","homepage":"https://jail.li"},"hermes":{"tags":["search","research","knowledge"],"category":"research"}}
 ---
 
 # JAIL Search
 
-Search engine covering 1.7 billion documents across 19 content types. Returns titles, authors, URLs, and short descriptions — for discovering sources and links, not retrieving full content. After finding relevant results, use their URLs with fetch or browsing tools to read the actual documents.
+Search a billion+ documents — papers, books, code, legal cases, forums, Wikipedia, and more. Returns titles, authors, URLs, and short descriptions — for discovering sources and links, not retrieving full content. After finding relevant results, use their URLs with fetch or browsing tools to read the actual documents.
 
 ## When to Use
 

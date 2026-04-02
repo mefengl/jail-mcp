@@ -1,7 +1,7 @@
 {
   "name": "jail-search",
   "version": "1.1.2",
-  "description": "Search 1.7 billion documents across academic papers, books, legal cases, forums, Wikipedia, and 19 content types.",
+  "description": "Search a billion+ documents — papers, books, code, legal cases, forums, Wikipedia, and more.",
   "author": {
     "name": "JAIL",
     "url": "https://jail.li"

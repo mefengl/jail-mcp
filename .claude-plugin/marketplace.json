@@ -8,7 +8,7 @@
     {
       "name": "jail-search",
       "source": "./",
-      "description": "Search 1.7B documents across academic papers, books, legal cases, forums, Wikipedia, and 19 content types.",
+      "description": "Search a billion+ documents — papers, books, code, legal cases, forums, Wikipedia, and more.",
       "version": "1.1.2"
     }
   ]

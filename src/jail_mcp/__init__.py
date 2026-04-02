@@ -52,7 +52,7 @@ async def _get(path: str, params: dict | None = None) -> dict:
     r.raise_for_status()
     return r.json()
 
-INSTRUCTIONS = """Search engine covering 1.7 billion documents across 19 content types. Returns titles, authors, URLs, and short descriptions — for discovering sources and links, not retrieving full content. After finding relevant results, use their URLs with fetch or browsing tools to read the actual documents.
+INSTRUCTIONS = """Search a billion+ documents — papers, books, code, legal cases, forums, Wikipedia, and more. Returns titles, authors, URLs, and short descriptions — for discovering sources and links, not retrieving full content. After finding relevant results, use their URLs with fetch or browsing tools to read the actual documents.
 
 ## When to use
 - User asks to research a topic, find papers, books, or articles

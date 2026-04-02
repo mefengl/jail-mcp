@@ -5,23 +5,45 @@
 [![Install in Cursor](https://img.shields.io/badge/Install_in-Cursor-000000?style=flat-square&logoColor=white)](https://cursor.com/en/install-mcp?name=jail&config=eyJuYW1lIjoiamFpbCIsInR5cGUiOiJodHRwIiwidXJsIjoiaHR0cHM6Ly9hcGkuamFpbC5saS9tY3AifQ==)
 [![Install in VS Code](https://img.shields.io/badge/Install_in-VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=jail&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A//api.jail.li/mcp%22%7D)
 
-Search 1.7B documents across papers, books, code, legal cases, forums, Wikipedia, and more.
+Search a billion+ documents — papers, books, code, legal cases, forums, Wikipedia, and more.
 
 **[jail.li](https://jail.li)**
 
-## Quick Start
+## Installation
 
-Connect to the hosted MCP server — no install needed:
+Connect to the hosted MCP server:
 
 ```
 https://api.jail.li/mcp
 ```
 
-[Get your API key](https://jail.li#pricing) for higher rate limits (optional).
-
-## Installation
+[Get API key](https://jail.li#pricing) for higher limits — append `?jailApiKey=` to the URL.
 
 <details open>
+<summary><b>Claude Code</b></summary>
+
+```bash
+claude mcp add --transport http jail https://api.jail.li/mcp
+```
+
+With API key:
+
+```bash
+claude mcp add --transport http jail "https://api.jail.li/mcp?jailApiKey=sk_live_..."
+```
+</details>
+
+<details>
+<summary><b>Codex</b></summary>
+
+```bash
+codex mcp add jail --url https://api.jail.li/mcp
+```
+
+With API key: `codex mcp add jail --url "https://api.jail.li/mcp?jailApiKey=sk_live_..."`
+</details>
+
+<details>
 <summary><b>Cursor</b></summary>
 
 Add to `~/.cursor/mcp.json`:
@@ -35,6 +57,8 @@ Add to `~/.cursor/mcp.json`:
   }
 }
 ```
+
+With API key: `"url": "https://api.jail.li/mcp?jailApiKey=sk_live_..."`
 </details>
 
 <details>
@@ -52,14 +76,8 @@ Add to `.vscode/mcp.json`:
   }
 }
 ```
-</details>
 
-<details>
-<summary><b>Claude Code</b></summary>
-
-```bash
-claude mcp add --transport http jail https://api.jail.li/mcp
-```
+With API key: `"url": "https://api.jail.li/mcp?jailApiKey=sk_live_..."`
 </details>
 
 <details>
@@ -77,14 +95,8 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
   }
 }
 ```
-</details>
 
-<details>
-<summary><b>Codex</b></summary>
-
-```bash
-codex mcp add jail --url https://api.jail.li/mcp
-```
+With API key: `"args": ["-y", "mcp-remote", "https://api.jail.li/mcp?jailApiKey=sk_live_..."]`
 </details>
 
 <details>
@@ -103,6 +115,8 @@ Add to your `opencode.json`:
   }
 }
 ```
+
+With API key: `"url": "https://api.jail.li/mcp?jailApiKey=sk_live_..."`
 </details>
 
 <details>
@@ -120,6 +134,8 @@ Edit `~/.copilot/mcp-config.json`:
   }
 }
 ```
+
+With API key: `"url": "https://api.jail.li/mcp?jailApiKey=sk_live_..."`
 </details>
 
 <details>
@@ -136,6 +152,8 @@ Add to `~/.codeium/windsurf/mcp_config.json`:
   }
 }
 ```
+
+With API key: `"serverUrl": "https://api.jail.li/mcp?jailApiKey=sk_live_..."`
 </details>
 
 <details>
@@ -149,13 +167,15 @@ mcp_servers:
     url: "https://api.jail.li/mcp"
 ```
 
+With API key: `url: "https://api.jail.li/mcp?jailApiKey=sk_live_..."`
+
 Or install the skill: `hermes skill install jail-search`
 </details>
 
-<details>
-<summary><b>Via npm Package</b></summary>
+### Via npm Package
 
-Use the npm package for stdio transport:
+<details>
+<summary>Use the npm/pypi package for stdio transport</summary>
 
 ```json
 {
@@ -169,19 +189,9 @@ Use the npm package for stdio transport:
 ```
 
 Or with Python: `"command": "uvx", "args": ["jail-mcp"]`
+
+For API key with stdio: `"env": { "JAIL_API_KEY": "sk_live_..." }`
 </details>
-
-### With API key
-
-Append `?jailApiKey=` to the URL for higher rate limits:
-
-```
-https://api.jail.li/mcp?jailApiKey=sk_live_your_key_from_jail_li
-```
-
-For the npm/uvx package, use an env var instead: `"env": { "JAIL_API_KEY": "sk_live_..." }`
-
-Get a key at [jail.li](https://jail.li#pricing).
 
 ## Tools
 
