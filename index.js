@@ -62,41 +62,54 @@ function summary(doc) {
   return s;
 }
 
-const INSTRUCTIONS = `You have access to JAIL Search, a discovery tool for finding documents across academic papers, case law, books, encyclopedias, forums, and more.
-
-Results include titles, authors, URLs, and short descriptions. This is for discovering sources and links, not retrieving full content. After finding relevant results, use their URLs with fetch or browsing tools to read the actual documents.
+const INSTRUCTIONS = `Search engine covering 1.7 billion documents across 19 content types. Returns titles, authors, URLs, and short descriptions — for discovering sources and links, not retrieving full content. After finding relevant results, use their URLs with fetch or browsing tools to read the actual documents.
 
 ## When to use
 - User asks to research a topic, find papers, books, or articles
 - User wants to look up facts, people, places, or concepts
 - User asks about community discussions or forum threads
 - User wants to find legal cases or legislation
-- User needs to find music, movies, or other media metadata
+- User needs to find music, movies, packages, or other metadata
 - User asks "search for...", "find...", or "look up..."
 
-## Quick start
-1. Call \`search(query="your topic", type="academic")\`. Type is required.
-2. Start with: academic, wiki, books, legal, forums. The rest just exist if you need.
-3. Use \`detail(doc_id)\` to get full metadata for a specific result
+## Types
 
-## Search strategy
-1. Pick the right type first: academic for papers, books for books, wiki for encyclopedia, forums for discussions, legal for cases
-2. Default to searching in English
-3. Unless you know exactly what you're looking for, 2-4 keywords usually work best
-4. Multi-word queries match any combination of terms, ranked by relevance
-5. Try different keywords and synonyms if first attempt returns few results
-6. Search the same topic across multiple types for cross-referencing
-7. Paginate: use next_cursor from response as the \`cursor\` parameter
+Start with: academic, wiki, books, legal, forums. The rest just exist if you need.
 
-## Available types
-academic, wiki, books, legal, forums, economics, packages, knowledge, news
-  music, video, health, geo, fandom, tech, audio, social, crypto, predictions
+| Type | Content |
+|------|---------|
+| academic | OpenAlex, arXiv, Semantic Scholar, DBLP |
+| wiki | Wikipedia (18 languages) |
+| books | Books, digital libraries, and classical literature |
+| legal | Harvard Case Law, CourtListener, EUR-Lex, UK Legislation |
+| forums | Hacker News, StackExchange, Lobsters, LessWrong, and 60+ more |
+| economics | World Bank, IMF, FRED, ECB, BLS, Tax Foundation |
+| packages | npm, PyPI, Crates.io, Libraries.io |
+| knowledge | Wikidata, structured knowledge, and facts |
+| news | News articles and journalism |
+| music | Discogs, MusicBrainz |
+| video | IMDb, YouTube |
+| health | Clinical trials and food safety data |
+| geo | World place names and geographic data |
+| fandom | Fan wiki articles and community knowledge bases |
+| tech | Dev.to, product community forums |
+| audio | Podcasts and audio content |
+| social | Mastodon, Lemmy, fediverse |
+| crypto | DeFi protocols, token data, and on-chain analytics |
+| predictions | Prediction markets and forecasting |
+
+## Strategy
+1. Pick the right type first — this determines which indices are searched
+2. Use 2-4 keywords (English preferred unless searching non-English content)
+3. Try different keywords and synonyms if first attempt returns few results
+4. Search the same topic across multiple types for cross-referencing
+5. Use next_cursor to paginate for more results
+6. Use detail(doc_id) for full metadata on promising results
 
 ## Response fields
 Each result: title, author, year, type, description (200 char), id, url, score.
 
-## Need higher limits?
-Get an API key at https://jail.li`;
+Get an API key at https://jail.li for higher limits.`;
 
 // ── Server ──────────────────────────────────────────────────────────
 const server = new McpServer({ name: "jail-search", version: "1.0.0" }, { instructions: INSTRUCTIONS });
