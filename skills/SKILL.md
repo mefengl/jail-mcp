@@ -75,3 +75,9 @@ Start with: `academic`, `wiki`, `books`, `legal`, `forums`. The rest just exist 
 4. Search the same topic across multiple types for cross-referencing
 5. Use `next_cursor` to paginate for more results
 6. Use detail endpoint for full metadata on promising results
+
+## Response fields
+
+Each result: title, author, year, type, description (200 char), id, url, score.
+
+Get an API key at https://jail.li for higher limits.
