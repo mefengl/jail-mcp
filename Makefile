@@ -1,4 +1,16 @@
-.PHONY: publish\:npm publish\:pypi publish\:skill publish\:registry
+.PHONY: bump publish\:npm publish\:pypi publish\:skill publish\:registry publish
+
+# Usage: make bump v=1.1.4
+bump:
+	@test -n "$(v)" || (echo "Usage: make bump v=1.2.3" && exit 1)
+	@sed -i '' 's/"version": "[^"]*"/"version": "$(v)"/' package.json server.json
+	@sed -i '' 's/^version = "[^"]*"/version = "$(v)"/' pyproject.toml
+	@echo "Bumped to $(v):"
+	@grep '"version"' package.json server.json
+	@grep '^version' pyproject.toml
+
+publish: bump publish\:npm publish\:pypi publish\:registry publish\:skill
+	@echo "All published: $(v)"
 
 publish\:npm:
 	@echo '//registry.npmjs.org/:_authToken='$$(op read 'op://Personal/npm-token/credential') > .npmrc
