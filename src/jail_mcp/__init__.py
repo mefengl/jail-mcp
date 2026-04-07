@@ -52,56 +52,7 @@ async def _get(path: str, params: dict | None = None) -> dict:
     r.raise_for_status()
     return r.json()
 
-INSTRUCTIONS = """Search a billion+ documents — papers, books, code, legal cases, forums, Wikipedia, and more. Returns titles, authors, URLs, and short descriptions — for discovering sources and links, not retrieving full content. After finding relevant results, use their URLs with fetch or browsing tools to read the actual documents.
-
-## When to use
-- User asks to research a topic, find papers, books, or articles
-- User wants to look up facts, people, places, or concepts
-- User asks about community discussions or forum threads
-- User wants to find legal cases or legislation
-- User needs to find music, movies, packages, or other metadata
-- User asks "search for...", "find...", or "look up..."
-
-## Types
-
-Start with: academic, wiki, books, legal, forums. The rest just exist if you need.
-
-| Type | Content |
-|------|---------|
-| academic | OpenAlex, arXiv, Semantic Scholar, DBLP |
-| wiki | Wikipedia (18 languages) |
-| books | Books, digital libraries, and classical literature |
-| legal | Harvard Case Law, CourtListener, EUR-Lex, UK Legislation |
-| forums | Hacker News, StackExchange, Lobsters, LessWrong, and 60+ more |
-| economics | World Bank, IMF, FRED, ECB, BLS, Tax Foundation |
-| packages | npm, PyPI, Crates.io, Libraries.io |
-| knowledge | Wikidata, structured knowledge, and facts |
-| news | News articles and journalism |
-| music | Discogs, MusicBrainz |
-| video | IMDb, YouTube |
-| health | Clinical trials and food safety data |
-| geo | World place names and geographic data |
-| fandom | Fan wiki articles and community knowledge bases |
-| tech | Dev.to, product community forums |
-| audio | Podcasts and audio content |
-| social | Mastodon, Lemmy, fediverse |
-| crypto | DeFi protocols, token data, and on-chain analytics |
-| predictions | Prediction markets and forecasting |
-
-## Strategy
-1. Pick the right type first — this determines which indices are searched
-2. Use 2-4 keywords (English preferred unless searching non-English content)
-3. Try different keywords and synonyms if first attempt returns few results
-4. Search the same topic across multiple types for cross-referencing
-5. Use next_cursor to paginate for more results
-6. Use detail(doc_id) for full metadata on promising results
-
-## Response fields
-Each result: title, author, year, type, description (200 char), id, url, score.
-
-Get an API key at https://jail.li for higher limits."""
-
-mcp = FastMCP("jail-search", instructions=INSTRUCTIONS)
+mcp = FastMCP("jail-search")
 
 # ── Tools ────────────────────────────────────────────────────────────
 def _summary(doc: dict) -> str:
@@ -113,11 +64,17 @@ def _summary(doc: dict) -> str:
 
 @mcp.tool()
 async def search(query: str, type: str, limit: int = 10, cursor: str | None = None):
-    """Search documents. Returns ranked results with title, author, year, description.
+    """Search documents. Returns ranked results with title, author, year, description (200 char), url, id, score — not full content. Use URLs from results with fetch/browsing to read actual documents.
+
+    Use when: user asks to research, find papers/books/articles, look up facts, find discussions, legal cases, or any "search for..." request.
+
+    Strategy: use 2-4 keywords per query (English preferred). Pick the right type first.
+    Try synonyms if few results. Search across multiple types to cross-reference.
+    Use detail() for full metadata on promising results.
 
     Args:
-        query: Search query (natural language or keywords, any language)
-        type: Content type (required). Use: academic, books, wiki, forums, legal, news, knowledge, music, video, audio, packages, geo, economics, health, fandom, social, tech, crypto, predictions.
+        query: Search query — use 2-4 keywords for best results. English preferred unless searching non-English content. Try different keywords and synonyms if first attempt returns few results.
+        type: Content type (required). academic: OpenAlex/arXiv/Semantic Scholar/DBLP | wiki: Wikipedia 18 languages | books: books/digital libraries | legal: Case Law/CourtListener/EUR-Lex | forums: HN/StackExchange/Lobsters/LessWrong/60+ | economics: World Bank/IMF/FRED | packages: npm/PyPI/Crates.io | knowledge: Wikidata | news: news articles | music: Discogs/MusicBrainz | video: IMDb/YouTube | health: clinical trials | geo: world places | fandom: fan wikis | tech: Dev.to | audio: podcasts | social: Mastodon/Lemmy | crypto: DeFi/tokens | predictions: prediction markets.
         limit: Results to return (1-50). Trial max 10, Pro max 50.
         cursor: Opaque pagination token. Use next_cursor from previous response.
     """
