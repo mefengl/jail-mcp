@@ -6,7 +6,7 @@ metadata: {"openclaw":{"requires":{"bins":["curl"]},"optionalEnv":["JAIL_API_KEY
 
 # JAIL Search
 
-Search documents. Returns ranked results with title, author, year, description (200 char), url, id, score — not full content. Use URLs from results with fetch or browsing tools to read actual documents.
+Search documents. Returns ranked results with title, author, year, description, url, id, score — not full content. Use URLs from results with fetch or browsing tools to read actual documents.
 
 ## When to Use
 

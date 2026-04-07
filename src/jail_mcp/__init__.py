@@ -64,7 +64,7 @@ def _summary(doc: dict) -> str:
 
 @mcp.tool()
 async def search(query: str, type: str, limit: int = 10, cursor: str | None = None):
-    """Search documents. Returns ranked results with title, author, year, description (200 char), url, id, score — not full content. Use URLs from results with fetch/browsing to read actual documents.
+    """Search documents. Returns ranked results with title, author, year, description, url, id, score — not full content. Use URLs from results with fetch/browsing to read actual documents.
 
     Use when: user asks to research, find papers/books/articles, look up facts, find discussions, legal cases, or any "search for..." request.
 
