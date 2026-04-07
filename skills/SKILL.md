@@ -12,6 +12,41 @@ Search documents. Returns ranked results with title, author, year, description (
 
 User asks to research, find papers/books/articles, look up facts, find discussions, legal cases, or any "search for..." request.
 
+## Strategy
+
+1. Pick the right type first — this determines which indices are searched
+2. Use 2-4 keywords (English preferred unless searching non-English content)
+3. Try different keywords and synonyms if first attempt returns few results
+4. Search the same topic across multiple types for cross-referencing
+5. Use `next_cursor` to paginate for more results
+6. Use detail endpoint for full metadata on promising results
+
+## Types
+
+Start with: `academic`, `wiki`, `books`, `legal`, `forums`. The rest just exist if you need.
+
+| Type | Content |
+|------|---------|
+| `academic` | OpenAlex, arXiv, Semantic Scholar, DBLP |
+| `wiki` | Wikipedia (18 languages) |
+| `books` | Books, digital libraries, and classical literature |
+| `legal` | Harvard Case Law, CourtListener, EUR-Lex, UK Legislation |
+| `forums` | Hacker News, StackExchange, Lobsters, LessWrong, and 60+ more |
+| `economics` | World Bank, IMF, FRED, ECB, BLS, Tax Foundation |
+| `packages` | npm, PyPI, Crates.io, Libraries.io |
+| `knowledge` | Wikidata, structured knowledge, and facts |
+| `news` | News articles and journalism |
+| `music` | Discogs, MusicBrainz |
+| `video` | IMDb, YouTube |
+| `health` | Clinical trials and food safety data |
+| `geo` | World place names and geographic data |
+| `fandom` | Fan wiki articles and community knowledge bases |
+| `tech` | Dev.to, product community forums |
+| `audio` | Podcasts and audio content |
+| `social` | Mastodon, Lemmy, fediverse |
+| `crypto` | DeFi protocols, token data, and on-chain analytics |
+| `predictions` | Prediction markets and forecasting |
+
 ## Via MCP (preferred if jail MCP server is configured)
 
 Use `mcp_jail_search(query, type)` and `mcp_jail_detail(doc_id)`.
@@ -53,38 +88,3 @@ Paginate: add `&cursor=CURSOR` using `next_cursor` from previous response.
 ```bash
 curl -s "https://api.jail.li/v1/detail/DOC_ID"
 ```
-
-## Types
-
-Start with: `academic`, `wiki`, `books`, `legal`, `forums`. The rest just exist if you need.
-
-| Type | Content |
-|------|---------|
-| `academic` | OpenAlex, arXiv, Semantic Scholar, DBLP |
-| `wiki` | Wikipedia (18 languages) |
-| `books` | Books, digital libraries, and classical literature |
-| `legal` | Harvard Case Law, CourtListener, EUR-Lex, UK Legislation |
-| `forums` | Hacker News, StackExchange, Lobsters, LessWrong, and 60+ more |
-| `economics` | World Bank, IMF, FRED, ECB, BLS, Tax Foundation |
-| `packages` | npm, PyPI, Crates.io, Libraries.io |
-| `knowledge` | Wikidata, structured knowledge, and facts |
-| `news` | News articles and journalism |
-| `music` | Discogs, MusicBrainz |
-| `video` | IMDb, YouTube |
-| `health` | Clinical trials and food safety data |
-| `geo` | World place names and geographic data |
-| `fandom` | Fan wiki articles and community knowledge bases |
-| `tech` | Dev.to, product community forums |
-| `audio` | Podcasts and audio content |
-| `social` | Mastodon, Lemmy, fediverse |
-| `crypto` | DeFi protocols, token data, and on-chain analytics |
-| `predictions` | Prediction markets and forecasting |
-
-## Strategy
-
-1. Pick the right type first — this determines which indices are searched
-2. Use 2-4 keywords (English preferred unless searching non-English content)
-3. Try different keywords and synonyms if first attempt returns few results
-4. Search the same topic across multiple types for cross-referencing
-5. Use `next_cursor` to paginate for more results
-6. Use detail endpoint for full metadata on promising results
