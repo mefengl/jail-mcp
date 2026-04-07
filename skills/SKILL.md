@@ -6,16 +6,11 @@ metadata: {"openclaw":{"requires":{"bins":["curl"]},"optionalEnv":["JAIL_API_KEY
 
 # JAIL Search
 
-Search a billion+ documents — papers, books, code, legal cases, forums, Wikipedia, and more. Returns titles, authors, URLs, and short descriptions — for discovering sources and links, not retrieving full content. After finding relevant results, use their URLs with fetch or browsing tools to read the actual documents.
+Search documents. Returns ranked results with title, author, year, description (200 char), url, id, score — not full content. Use URLs from results with fetch or browsing tools to read actual documents.
 
 ## When to Use
 
-- User asks to research a topic, find papers, books, or articles
-- User wants to look up facts, people, places, or concepts
-- User asks about community discussions or forum threads
-- User wants to find legal cases or legislation
-- User needs to find music, movies, packages, or other metadata
-- User asks "search for...", "find...", or "look up..."
+User asks to research, find papers/books/articles, look up facts, find discussions, legal cases, or any "search for..." request.
 
 ## Via MCP (preferred if jail MCP server is configured)
 
@@ -93,9 +88,3 @@ Start with: `academic`, `wiki`, `books`, `legal`, `forums`. The rest just exist 
 4. Search the same topic across multiple types for cross-referencing
 5. Use `next_cursor` to paginate for more results
 6. Use detail endpoint for full metadata on promising results
-
-## Response fields
-
-Each result: title, author, year, type, description (200 char), id, url, score.
-
-Get an API key at https://jail.li for higher limits.
