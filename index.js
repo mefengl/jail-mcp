@@ -34,7 +34,7 @@ const TYPES = {
   fandom: "Fan wiki articles and community knowledge bases",
   tech: "Dev.to, product community forums",
   audio: "Podcasts and audio content",
-  social: "Mastodon, Lemmy, fediverse",
+  social: "Reddit, Mastodon, Lemmy, fediverse",
   crypto: "DeFi protocols, token data, and on-chain analytics",
   predictions: "Prediction markets and forecasting",
 };
@@ -70,7 +70,7 @@ server.tool(
   "search", "Search documents. Returns ranked results with title, author, year, description, url, id, score — not full content. Use URLs from results with fetch/browsing to read actual documents.\n\nUse when: user asks to research, find papers/books/articles, look up facts, find discussions, legal cases, or any \"search for...\" request.\n\nStrategy: use 2-4 keywords per query (English preferred). Pick the right type first. Try synonyms if few results. Search across multiple types to cross-reference. Use detail() for full metadata on promising results.",
   {
     query: z.string().describe("Search query — use 2-4 keywords for best results. English preferred unless searching non-English content. Try different keywords and synonyms if first attempt returns few results."),
-    type: z.enum(TYPE_KEYS).describe("Content type (required). academic: OpenAlex/arXiv/Semantic Scholar/DBLP | wiki: Wikipedia 18 languages | books: books/digital libraries | legal: Case Law/CourtListener/EUR-Lex | forums: HN/StackExchange/Lobsters/LessWrong/60+ | economics: World Bank/IMF/FRED | packages: npm/PyPI/Crates.io | knowledge: Wikidata | news: news articles | music: Discogs/MusicBrainz | video: IMDb/YouTube | health: clinical trials | geo: world places | fandom: fan wikis | tech: Dev.to | audio: podcasts | social: Mastodon/Lemmy | crypto: DeFi/tokens | predictions: prediction markets."),
+    type: z.enum(TYPE_KEYS).describe("Content type (required). academic: OpenAlex/arXiv/Semantic Scholar/DBLP | wiki: Wikipedia 18 languages | books: books/digital libraries | legal: Case Law/CourtListener/EUR-Lex | forums: HN/StackExchange/Lobsters/LessWrong/60+ | economics: World Bank/IMF/FRED | packages: npm/PyPI/Crates.io | knowledge: Wikidata | news: news articles | music: Discogs/MusicBrainz | video: IMDb/YouTube | health: clinical trials | geo: world places | fandom: fan wikis | tech: Dev.to | audio: podcasts | social: Reddit/Mastodon/Lemmy | crypto: DeFi/tokens | predictions: prediction markets."),
     limit: z.number().int().min(1).max(50).default(10).describe("Results to return (1-50). Trial max 10, Pro max 50."),
     cursor: z.string().optional().describe("Opaque pagination token. Use next_cursor from previous response."),
   },

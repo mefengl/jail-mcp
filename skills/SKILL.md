@@ -43,7 +43,7 @@ Start with: `academic`, `wiki`, `books`, `legal`, `forums`. The rest just exist 
 | `fandom` | Fan wiki articles and community knowledge bases |
 | `tech` | Dev.to, product community forums |
 | `audio` | Podcasts and audio content |
-| `social` | Mastodon, Lemmy, fediverse |
+| `social` | Reddit, Mastodon, Lemmy, fediverse |
 | `crypto` | DeFi protocols, token data, and on-chain analytics |
 | `predictions` | Prediction markets and forecasting |
 

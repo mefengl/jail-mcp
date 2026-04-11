@@ -218,7 +218,7 @@ For API key with stdio: `"env": { "JAIL_API_KEY": "sk_live_..." }`
 | health | Clinical trials, food safety |
 | geo | World place names, geographic data |
 | tech | Dev.to, product community forums |
-| social | Mastodon, Lemmy, fediverse |
+| social | Reddit, Mastodon, Lemmy, fediverse |
 | fandom | Fan wiki articles, community knowledge |
 | crypto | DeFi protocols, token data, on-chain analytics |
 | predictions | Prediction markets, forecasting |

@@ -31,7 +31,7 @@ TYPES = {
     "fandom": "Fan wiki articles and community knowledge bases",
     "tech": "Dev.to, product community forums",
     "audio": "Podcasts and audio content",
-    "social": "Mastodon, Lemmy, fediverse",
+    "social": "Reddit, Mastodon, Lemmy, fediverse",
     "crypto": "DeFi protocols, token data, and on-chain analytics",
     "predictions": "Prediction markets and forecasting",
 }
@@ -74,7 +74,7 @@ async def search(query: str, type: str, limit: int = 10, cursor: str | None = No
 
     Args:
         query: Search query — use 2-4 keywords for best results. English preferred unless searching non-English content. Try different keywords and synonyms if first attempt returns few results.
-        type: Content type (required). academic: OpenAlex/arXiv/Semantic Scholar/DBLP | wiki: Wikipedia 18 languages | books: books/digital libraries | legal: Case Law/CourtListener/EUR-Lex | forums: HN/StackExchange/Lobsters/LessWrong/60+ | economics: World Bank/IMF/FRED | packages: npm/PyPI/Crates.io | knowledge: Wikidata | news: news articles | music: Discogs/MusicBrainz | video: IMDb/YouTube | health: clinical trials | geo: world places | fandom: fan wikis | tech: Dev.to | audio: podcasts | social: Mastodon/Lemmy | crypto: DeFi/tokens | predictions: prediction markets.
+        type: Content type (required). academic: OpenAlex/arXiv/Semantic Scholar/DBLP | wiki: Wikipedia 18 languages | books: books/digital libraries | legal: Case Law/CourtListener/EUR-Lex | forums: HN/StackExchange/Lobsters/LessWrong/60+ | economics: World Bank/IMF/FRED | packages: npm/PyPI/Crates.io | knowledge: Wikidata | news: news articles | music: Discogs/MusicBrainz | video: IMDb/YouTube | health: clinical trials | geo: world places | fandom: fan wikis | tech: Dev.to | audio: podcasts | social: Reddit/Mastodon/Lemmy | crypto: DeFi/tokens | predictions: prediction markets.
         limit: Results to return (1-50). Trial max 10, Pro max 50.
         cursor: Opaque pagination token. Use next_cursor from previous response.
     """
