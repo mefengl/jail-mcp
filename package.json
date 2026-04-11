@@ -1,6 +1,6 @@
 {
   "name": "jail-mcp",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Search a billion+ documents — papers, books, code, legal cases, forums, Wikipedia, and more.",
   "license": "MIT",
   "type": "module",

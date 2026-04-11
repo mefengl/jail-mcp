@@ -3,7 +3,7 @@
   "name": "io.github.mefengl/jail-mcp",
   "title": "JAIL Search",
   "description": "Search a billion+ documents — papers, books, code, legal cases, forums, Wikipedia, and more.",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "repository": {
     "url": "https://github.com/mefengl/jail-mcp",
     "source": "github"
@@ -19,7 +19,7 @@
     {
       "registryType": "npm",
       "identifier": "jail-mcp",
-      "version": "1.4.0",
+      "version": "1.4.1",
       "transport": { "type": "stdio" },
       "environmentVariables": [
         {
@@ -33,7 +33,7 @@
     {
       "registryType": "pypi",
       "identifier": "jail-mcp",
-      "version": "1.4.0",
+      "version": "1.4.1",
       "transport": { "type": "stdio" },
       "environmentVariables": [
         {
